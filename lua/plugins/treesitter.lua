@@ -8,6 +8,7 @@ return {
 			"zig",
 			"python",
 			"go",
+			"rust",
 		},
 		auto_install = false,
 		highlight = { enable = true },
