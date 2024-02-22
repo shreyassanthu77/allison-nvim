@@ -1,4 +1,4 @@
-equire("allison.settings")
+require("allison.settings")
 require("allison.keymap")
 require("allison.lazy")
 
