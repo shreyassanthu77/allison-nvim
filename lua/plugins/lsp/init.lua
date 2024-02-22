@@ -12,7 +12,6 @@ return {
 			{ "j-hui/fidget.nvim",       opts = {} },
 
 			"folke/neodev.nvim",
-			"zbirenbaum/copilot.lua",
 			"folke/trouble.nvim",
 
 			-- Cmp Stuff
@@ -105,28 +104,6 @@ return {
 					autocomplete = {
 						"TextChanged",
 					},
-				},
-			})
-
-			require("copilot").setup({
-				panel = { enabled = false },
-				suggestion = {
-					auto_trigger = true,
-					keymap = {
-						next = "<A-j>",
-						accept = "<A-a>",
-						dismiss = "<A-d>",
-					},
-				},
-				filetypes = {
-					markdown = true,
-				},
-			})
-
-			vim.filetype.add({
-				extension = {
-					templ = "templ",
-					pcss = "css",
 				},
 			})
 		end,
