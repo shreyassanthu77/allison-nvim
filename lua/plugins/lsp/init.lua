@@ -21,7 +21,9 @@ return {
 
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
-			"hrsh7th/cmp-buffer",
+			-- uncomment to eiasble local buffer completion
+			-- also check line 102 ( hit :102 in normal mode )
+			-- "hrsh7th/cmp-buffer",
 
 			"rafamadriz/friendly-snippets",
 		},
@@ -97,8 +99,9 @@ return {
 					{ name = "nvim_lsp" },
 					{ name = "luasnip" },
 					{ name = "path" },
-					{ name = "buffer" },
-					-- { name = "copilot" },
+					-- uncomment to eiasble local buffer completion
+					-- also check line 24 ( hit :24 in normal mode )
+					-- { name = "buffer" },
 				},
 				completion = {
 					autocomplete = {

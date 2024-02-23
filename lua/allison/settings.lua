@@ -2,7 +2,7 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 
 vim.opt.nu = true
-vim.opt.relativenumber = true
+vim.opt.relativenumber = false
 vim.opt.wrap = false
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 5
@@ -33,4 +33,3 @@ vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
-

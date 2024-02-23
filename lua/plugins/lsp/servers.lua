@@ -1,3 +1,4 @@
+local zls_path = vim.fs.normalize("~/.local/bin/zls")
 return {
 	gopls = {},
 	pyright = {},
@@ -9,5 +10,7 @@ return {
 			telemetry = { enable = false },
 		},
 	},
-	zls = {},
+	zls = {
+		cmd = { zls_path },
+	},
 }

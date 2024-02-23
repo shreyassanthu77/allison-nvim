@@ -17,6 +17,10 @@ nmap("U", "<C-r>", "Redo")
 nmap("<leader>p", [["_dP]], "Paste over selection without overriding the copied text")
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
 nmap("<leader>Y", [["+Y]], "Copy to clipboard until end of line")
+
+vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from clipboard" })
+nmap("<leader>P", [["+P]], "Paste from clipboard before cursor")
+
 nmap("<leader>e", vim.cmd.Ex, "Open Netrw")
 
 -- Highlight on yank
@@ -27,4 +31,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
 	pattern = "*",
 })
-

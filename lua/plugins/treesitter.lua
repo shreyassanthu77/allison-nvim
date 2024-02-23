@@ -9,6 +9,7 @@ return {
 			"python",
 			"go",
 			"rust",
+			"vimdoc",
 		},
 		auto_install = false,
 		highlight = { enable = true },
@@ -21,4 +22,3 @@ return {
 		end, 0)
 	end,
 }
-
