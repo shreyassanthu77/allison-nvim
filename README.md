@@ -24,3 +24,30 @@
 │   │   ├── undotree.lua # a plugin to visualize all the changes ever made to a file
 │   │   ├── which-key.lua # adds a popup with all the keymaps
 ```
+
+## Global Settings
+- enamble line numbers
+- disable relative line numbers
+- disable wrap (enamble if you want)
+- set scrolloff to 8 (:help scrolloff for more info)
+
+- enamble termguicolors (enables true color support)
+
+- set some good split defaults
+  - splitbelow
+  - splitright
+
+- set tabstop and other stuff 
+(it's a bit involved, check the docs for more info)
+
+- disable swap files and backup files in favaor of undo files
+- set the undodir to ~/.vim/undodir
+
+- Set some good search defaults
+
+- always show the signcolumn
+
+- set some code folding defaults.
+> Folds are not enabled by default 
+so you need a plugin to enable them.
+I use a plugin called `ufo` for this.
