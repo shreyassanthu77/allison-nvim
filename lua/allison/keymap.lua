@@ -14,7 +14,6 @@ xmap("K", ":m '<-2<CR>gv=gv", "Move Selection up")
 
 nmap("U", "<C-r>", "Redo")
 
-nmap("<leader>p", [["_dP]], "Paste over selection without overriding the copied text")
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], { desc = "Copy to clipboard" })
 nmap("<leader>Y", [["+Y]], "Copy to clipboard until end of line")
 
