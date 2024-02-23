@@ -84,6 +84,9 @@ local lspOverrides = {
 	["@lsp.type.struct"] = fg(colors.blue),
 	["@lsp.type.property"] = fg(colors.fgo),
 	["@lsp.type.namespace"] = fg(colors.green),
+
+	-- zig specific
+	["@keyword.import.zig"] = fg(colors.green),
 }
 
 return {
