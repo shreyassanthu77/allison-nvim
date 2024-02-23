@@ -52,6 +52,13 @@
 - `<Leader> + u` to toggle undotree to look at all the changes made to the files
 
 ## LSP Keymaps (only if you have LSP enabled for the current file)
+- `Ctrl + space` to get auto completions
+    - `Tab` or `Ctrl + n` to select the next completion
+    - `Shift + Tab` or `Ctrl + p` to select the previous completion
+    - `Enter` to select the current completion
+    - `Ctrl + f` to scroll down the docs window
+    - `Ctrl + d` to scroll up the docs window
+    - `Alt + e` to close the completion window
 - `gd` to go to definition of the word under the cursor
 - `gD` to go to the declaration of the word under the cursor
 - `gr` to find references of the word under the cursor
@@ -67,6 +74,14 @@
     - `q` to close the diagnostics window (if cursor is in the diagnostics window)
     - `<Leader> + dd` to toggle the diagnostics window (if not in diagnostics window already)
     - `Shift + K` on a line to see the full error message
+- `<Leader> + f` to format the current file (more info at the botto)
+
+## Formatting
+For formatting `conform.nvim` is used
+It uses a formatter cinfigured in the `lua/lsp/format.lua` file
+or the one provided by the LSP server if it's available.
+To install a formatter run `:Mason` and select the formatter you want to install.
+and then tell `conform.nvim` to use that formatter by adding it to the `lua/lsp/format.lua` file.
 - `<Leader> + f` to format the current file (more info at the botto)
 
 ## Harpoon
@@ -90,7 +105,6 @@ You can add the current file to the list of files and then switch to any of the 
 - `<Leader> + hf` to open the forth file in the list
 
 You can set more keymaps in the `lua/plugins/harpoon.lua` file.
-
 
 ## Global Settings
 - enamble line numbers
@@ -119,10 +133,8 @@ You can set more keymaps in the `lua/plugins/harpoon.lua` file.
 so you need a plugin to enable them.
 I use a plugin called `ufo` for this.
 
-## Formatting
-For formatting `conform.nvim` is used
-It uses a formatter cinfigured in the `lua/lsp/format.lua` file
-or the one provided by the LSP server if it's available.
-To install a formatter run `:Mason` and select the formatter you want to install.
-and then tell `conform.nvim` to use that formatter by adding it to the `lua/lsp/format.lua` file.
-- `<Leader> + f` to format the current file (more info at the botto)
+## Theme (Customization)
+The theme `gruvbox-material`
+is setup at the bottom of the `lua/plugins/theme.lua` file.
+Customizations are also done in the same file in the config
+function at the bottom of the file.
