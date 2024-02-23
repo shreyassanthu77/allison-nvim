@@ -23,11 +23,11 @@
 │   │   ├── treesitter.lua # adds treesitter for awesome syntax highlighting
 │   │   ├── undotree.lua # a plugin to visualize all the changes ever made to a file
 │   │   ├── which-key.lua # adds a popup with all the keymaps
-│   ├── lsp/ # all the LSP related settings
-│   │   ├── init.lua
-│   │   ├── format.lua
-│   │   ├── lsp_attach.lua # attaches the LSP to the current buffer and sets up keymaps
-│   │   ├── servers.lua # all the LSP servers and their config
+│   │   ├── lsp/ # all the LSP related settings
+│   │   │   ├── init.lua
+│   │   │   ├── format.lua
+│   │   │   ├── lsp_attach.lua # attaches the LSP to the current buffer and sets up keymaps
+│   │   │   ├── servers.lua # all the LSP servers and their config
 ```
 
 ## keymaps
