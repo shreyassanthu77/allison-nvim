@@ -3,7 +3,7 @@ vim.g.netrw_banner = 0
 
 vim.opt.nu = true
 vim.opt.relativenumber = false
-vim.opt.wrap = false
+vim.opt.wrap = true
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 5
 
