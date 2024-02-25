@@ -1,4 +1,5 @@
 return {
+	-- Source: https://github.com/stevearc/oil.nvim?tab=readme-ov-file#installation
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -20,7 +21,7 @@ return {
 				if type == "oil" then
 					vim.keymap.set({ "n", "v", "i" }, "<A-s>", function()
 						oil.save({
-							confirm = false,
+							confirm = true,
 						})
 					end, {
 						desc = "Save changes",

@@ -1,4 +1,5 @@
 return {
+	-- Source: https://github.com/gorbit99/codewindow.nvim
 	"gorbit99/codewindow.nvim",
 	config = function()
 		local codewindow = require('codewindow')
