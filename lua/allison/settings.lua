@@ -4,9 +4,11 @@ vim.g.netrw_banner = 0
 vim.opt.nu = true
 vim.opt.relativenumber = false
 vim.opt.wrap = true
+vim.opt.whichwrap = "b,s,h,l"
+-- TODO: wrapmargin is not working, fix it!
+vim.opt.wrapmargin = 25
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 5
-
 vim.o.termguicolors = true
 
 vim.opt.splitbelow = true

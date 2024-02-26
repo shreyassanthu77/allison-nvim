@@ -1,5 +1,24 @@
 # Neovim Config
 
+## Notes to self:
+1. I want a tabline, here are some notable ones to refer to:
+  - https://github.com/romgrk/barbar.nvim
+  - https://github.com/nanozuki/tabby.nvim
+2. Startup section:
+  - https://github.com/TobinPalmer/Tip.nvim
+  - https://github.com/CWood-sdf/spaceport.nvim
+3. Note taking:
+  - https://github.com/stevearc/gkeep.nvim
+  - look for others(markdown/notes)
+4. Utility:
+  - There seems to be some support for better buffer managers here, consider them.
+  - https://github.com/chrisgrieser/nvim-early-retirement Something like this may be useful in addition to what I use for buffer management.
+5. Terminal additions:
+  - https://github.com/willothy/flatten.nvim This looks fascinating and potentially useful!
+  - https://github.com/akinsho/toggleterm.nvim
+6. Motion:
+  - There looks to be some gold here! 
+
 ## Project Structure
 ```bash
 .
