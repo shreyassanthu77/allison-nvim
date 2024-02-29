@@ -76,6 +76,7 @@ local lspOverrides = {
 	["@type.qualifier"] = fg(colors.red),
 	["@attribute.zig"] = fg(colors.red),
 	["@type.builtin"] = fg(colors.blue),
+	["@keyword.operator.zig"] = fg(colors.red),
 }
 
 return {
