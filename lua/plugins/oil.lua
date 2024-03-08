@@ -1,4 +1,6 @@
 return {
+	-- Seems fancier than I need. Will add this to the performance check and maybe look at why this is useful later on.
+	-- Source: https://github.com/stevearc/oil.nvim?tab=readme-ov-file#installation
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
@@ -20,7 +22,7 @@ return {
 				if type == "oil" then
 					vim.keymap.set({ "n", "v", "i" }, "<A-s>", function()
 						oil.save({
-							confirm = false,
+							confirm = true,
 						})
 					end, {
 						desc = "Save changes",

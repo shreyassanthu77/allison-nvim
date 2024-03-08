@@ -20,6 +20,7 @@ nmap("<leader>Y", [["+Y]], "Copy to clipboard until end of line")
 vim.keymap.set({ "n", "v" }, "<leader>p", [["+p]], { desc = "Paste from clipboard" })
 nmap("<leader>P", [["+P]], "Paste from clipboard before cursor")
 
+-- This is the default file browser? it has the same keybind as oil does.
 nmap("<leader>e", vim.cmd.Ex, "Open Netrw")
 
 -- Highlight on yank
