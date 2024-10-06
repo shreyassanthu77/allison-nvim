@@ -60,7 +60,7 @@
 - `<Leader> + p` to paste from system clipboard
 - `<Leader> + Shift + p` to paste from system clipboard before the cursor
 - `<Leader> + e` to open the file explorer (oil.nvim)
-    - `Alt + s` to force apply any changes without a conformation
+- `Alt + s` to force apply any changes without a conformation
 - `gcc` to comment or uncomment a line
 - `gc` to comment or uncomment a block of code (visual mode)
 
