@@ -4,6 +4,7 @@
 1. I want a tabline, here are some notable ones to refer to:
   - https://github.com/romgrk/barbar.nvim
   - https://github.com/nanozuki/tabby.nvim
+  - RESOLVED: I got barbar and am using it full time now. 
 2. Startup section:
   - https://github.com/TobinPalmer/Tip.nvim
   - https://github.com/CWood-sdf/spaceport.nvim
@@ -18,6 +19,10 @@
   - https://github.com/akinsho/toggleterm.nvim
 6. Motion:
   - There looks to be some gold here! 
+
+Need a way to easily switch between buffers. Harpoon? alternate buffers? 
+Can do `<leader> <leader>` for all current directory files. Can do `<leader> ff` for buffer selection but I don't like it and
+it's not fast enough  don't think.  
 
 ## Project Structure
 ```bash
