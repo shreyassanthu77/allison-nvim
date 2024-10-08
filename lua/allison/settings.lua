@@ -2,7 +2,7 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 
 vim.opt.nu = true
-vim.opt.relativenumber = false
+vim.opt.relativenumber = true
 vim.opt.wrap = true
 
 -- This was crazy? some weird helix nonsense.
