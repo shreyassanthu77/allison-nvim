@@ -3,7 +3,7 @@ return {
 	opts = {
 		format_after_save = { lsp_fallback = true },
 		formatters_by_ft = {
-			json = { { "deno_fmt", "prettierd" } },
+			json = { { "prettierd" } },
 			lua = { "stylua" },
 			python = { "black" },
 		},
