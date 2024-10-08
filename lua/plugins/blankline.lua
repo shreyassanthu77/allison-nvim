@@ -10,8 +10,9 @@ return {
 				char = "┊",
 			},
 			scope = {
-				show_start = false,
-				show_end = false,
+				-- TODO: This seems genuinely useful and that I'd like it but idk how it works yet.
+				show_start = true,
+				show_end = true,
 			},
 		})
 	end,
