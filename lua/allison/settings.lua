@@ -4,7 +4,10 @@ vim.g.netrw_banner = 0
 vim.opt.nu = true
 vim.opt.relativenumber = false
 vim.opt.wrap = true
-vim.opt.whichwrap = "b,s,h,l"
+
+-- This was crazy? some weird helix nonsense.
+-- vim.opt.whichwrap = "b,s,h,l"
+
 -- TODO: wrapmargin is not working, fix it!
 -- NVM, seems fine now? Remove this TODO once you confirm forsure it's working well?
 vim.opt.wrapmargin = 25
