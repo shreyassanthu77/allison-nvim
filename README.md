@@ -1,5 +1,29 @@
 # Neovim Config
 
+## Notes to self:
+1. I want a tabline, here are some notable ones to refer to:
+  - https://github.com/romgrk/barbar.nvim
+  - https://github.com/nanozuki/tabby.nvim
+  - RESOLVED: I got barbar and am using it full time now. 
+2. Startup section:
+  - https://github.com/TobinPalmer/Tip.nvim
+  - https://github.com/CWood-sdf/spaceport.nvim
+3. Note taking:
+  - https://github.com/stevearc/gkeep.nvim
+  - look for others(markdown/notes)
+4. Utility:
+  - There seems to be some support for better buffer managers here, consider them.
+  - https://github.com/chrisgrieser/nvim-early-retirement Something like this may be useful in addition to what I use for buffer management.
+5. Terminal additions:
+  - https://github.com/willothy/flatten.nvim This looks fascinating and potentially useful!
+  - https://github.com/akinsho/toggleterm.nvim
+6. Motion:
+  - There looks to be some gold here! 
+
+Need a way to easily switch between buffers. Harpoon? alternate buffers? 
+Can do `<leader> <leader>` for all current directory files. Can do `<leader> ff` for buffer selection but I don't like it and
+it's not fast enough  don't think.  
+
 ## Project Structure
 ```bash
 .
@@ -41,7 +65,7 @@
 - `<Leader> + p` to paste from system clipboard
 - `<Leader> + Shift + p` to paste from system clipboard before the cursor
 - `<Leader> + e` to open the file explorer (oil.nvim)
-    - `Alt + s` to force apply any changes without a conformation
+- `Alt + s` to force apply any changes without a conformation
 - `gcc` to comment or uncomment a line
 - `gc` to comment or uncomment a block of code (visual mode)
 

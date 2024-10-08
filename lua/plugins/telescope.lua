@@ -1,4 +1,7 @@
 return {
+	-- Seems like the best option for fuzzy finding. Can run :checkhealth telescope to see if it's healthy.
+	-- TODO: Go through pickers and find what I actually want to use.
+	-- Source: https://github.com/nvim-telescope/telescope.nvim
 	"nvim-telescope/telescope.nvim",
 	branch = "0.1.x",
 	dependencies = {
