@@ -6,6 +6,7 @@ vim.opt.relativenumber = false
 vim.opt.wrap = true
 vim.opt.whichwrap = "b,s,h,l"
 -- TODO: wrapmargin is not working, fix it!
+-- NVM, seems fine now? Remove this TODO once you confirm forsure it's working well?
 vim.opt.wrapmargin = 25
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 5
@@ -29,7 +30,6 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
 vim.opt.signcolumn = "yes"
-
 
 vim.o.foldcolumn = "0"
 vim.o.foldlevel = 99
