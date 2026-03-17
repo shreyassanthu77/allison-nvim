@@ -1,11 +1,6 @@
--- Detect a ZML project root for the given buffer.
+-- Detect a ZML project root starting from a directory.
 -- Returns the absolute path to the 'zml' root (if found), otherwise nil.
-local function detect_zml_root_for_buf(bufnr)
-	local bufname = vim.api.nvim_buf_get_name(bufnr)
-	if not bufname or bufname == "" then
-		return nil
-	end
-	local dir = vim.fs.dirname(bufname)
+local function detect_zml_root_from_dir(dir)
 	if not dir or dir == "" then
 		return nil
 	end
@@ -45,6 +40,16 @@ local function detect_zml_root_for_buf(bufnr)
 	return nil
 end
 
+-- Backwards-compatible wrapper: detect ZML root from buffer's directory
+local function detect_zml_root_for_buf(bufnr)
+	local bufname = vim.api.nvim_buf_get_name(bufnr)
+	if not bufname or bufname == "" then
+		return nil
+	end
+	local dir = vim.fs.dirname(bufname)
+	return detect_zml_root_from_dir(dir)
+end
+
 return {
 	gopls = {},
 	rust_analyzer = {},
@@ -60,19 +65,33 @@ return {
 		},
 	},
 	zls = {
-		-- Select binary dynamically per buffer
-		cmd = function()
-			local bufnr = vim.api.nvim_get_current_buf()
-			local root = detect_zml_root_for_buf(bufnr)
-			if root then
-				return { root .. "/tools/zls.sh" }
+		-- API compliant: use static cmd and override per root_dir via on_new_config
+		cmd = { "zls" },
+		on_new_config = function(new_config, new_root_dir)
+			-- Determine if this root is inside a ZML project
+			local zml_root = detect_zml_root_from_dir(new_root_dir or "")
+			if zml_root then
+				local wrapper = zml_root .. "/tools/zls.sh"
+				if vim.fn.executable(wrapper) == 1 then
+					new_config.cmd = { wrapper }
+				else
+					vim.notify(
+						string.format(
+							"[zls] ZML project detected at %s but wrapper missing or not executable: %s. Falling back to system 'zls'.",
+							zml_root,
+							wrapper
+						),
+						vim.log.levels.WARN
+					)
+					new_config.cmd = { "zls" }
+				end
+			else
+				new_config.cmd = { "zls" }
 			end
-			return { "zls" } -- Mason/system PATH
 		end,
 		settings = {
 			zls = {
 				enable_autofix = true,
-				-- Note: zls.sh is expected to handle zig executable configuration for ZML projects
 			},
 		},
 	},

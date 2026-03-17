@@ -12,26 +12,13 @@ return {
 		vim.g.loaded_netrw = 1
 		vim.g.loaded_netrwPlugin = 1
 
-		-- If Neovim was started with exactly one directory argument, open Oil
+		-- If Neovim was started with a directory argument, open Oil
 		vim.api.nvim_create_autocmd("VimEnter", {
-			callback = function()
-				-- count of "file" args (ignores -c, -S etc.)
-				if vim.fn.argc(-1) ~= 1 then
-					return
+			callback = vim.schedule_wrap(function(data)
+				if data.file == "" or vim.fn.isdirectory(data.file) == 1 then
+					require("oil").open(data.file ~= "" and data.file or nil)
 				end
-				local arg = vim.fn.argv(0)
-				if not arg or arg == "" then
-					return
-				end
-				local uv = vim.uv or vim.loop
-				local stat = uv.fs_stat(arg)
-				if stat and stat.type == "directory" then
-					-- Schedule to avoid race conditions with startup
-					vim.schedule(function()
-						vim.cmd(string.format("Oil %s", vim.fn.fnameescape(arg)))
-					end)
-				end
-			end,
+			end),
 		})
 	end,
 	config = function()

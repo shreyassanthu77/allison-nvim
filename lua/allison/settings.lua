@@ -17,6 +17,8 @@ vim.opt.softtabstop = 2
 vim.opt.swapfile = false
 vim.opt.updatetime = 300
 vim.opt.backup = false
+vim.opt.hidden = true    -- Allow switching from modified buffers (prevents E37)
+vim.opt.confirm = true   -- Prompt on quit when unsaved changes exist
 
 -- Cross-platform undo directory
 local uv = vim.uv or vim.loop

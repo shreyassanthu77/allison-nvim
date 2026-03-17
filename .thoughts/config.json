@@ -1,22 +1,28 @@
 {
-	"version": "2.0",
-	"mount_dirs": {
-		"thoughts": "thoughts",
-		"context": "context",
-		"references": "references"
-	},
-	"thoughts_mount": {
-		"remote": "git@github.com:allisoneer/personal_thoughts.git",
-		"subpath": "projects/nvim",
-		"sync": "auto"
-	},
-	"context_mounts": [
+  "version": "2.0",
+  "mount_dirs": {
+    "thoughts": "thoughts",
+    "context": "context",
+    "references": "references"
+  },
+  "thoughts_mount": {
+    "remote": "git@github.com:allisoneer/personal_thoughts.git",
+    "subpath": "projects/nvim",
+    "sync": "auto"
+  },
+  "context_mounts": [
     {
-			"remote": "git@github.com:allisoneer/personal_thoughts.git",
-			"subpath": "projects/agentic_auxilary",
-			"mount_path": "general",
-			"sync": "auto"
-		}
+      "remote": "git@github.com:allisoneer/personal_thoughts.git",
+      "subpath": "projects/agentic_auxilary",
+      "mount_path": "general",
+      "sync": "auto"
+    }
   ],
-	"references": ["https://github.com/allisoneer/agentic_auxilary.git"]
+  "references": [
+    "https://github.com/allisoneer/agentic_auxilary.git",
+    {
+      "remote": "https://github.com/dmtrKovalenko/fff.nvim",
+      "description": "Rust-backed fuzzy finder for Neovim - evaluating as potential Telescope alternative/supplement"
+    }
+  ]
 }

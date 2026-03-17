@@ -46,6 +46,7 @@ nmap("<leader>z", function()
 end, "Run zig-nvim-plugin")
 
 nmap("<C-t>", "<Cmd>enew<CR>", "new buffer tab")
+nmap("<leader>n", "<Cmd>enew<CR>", "New empty buffer")
 nmap("<C-q>", "<Cmd>BufferClose<CR>", "Close current buffer")
 
 -- Copy current file path to clipboard
