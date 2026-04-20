@@ -1,89 +1,127 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
-	event = "BufReadPost",
+	branch = "main",
+	lazy = false,
 	build = ":TSUpdate",
 	config = function()
-		-- Register custom parsers first
-		local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+		local function register_zine_parsers()
+			local parsers = require("nvim-treesitter.parsers")
 
-		-- Add Zine-related parsers
-		parser_config.ziggy = {
-			install_info = {
-				url = "https://github.com/kristoff-it/ziggy",
-				files = { "tree-sitter-ziggy/src/parser.c" },
-				branch = "main",
-				generate_requires_npm = false,
-				requires_generate_from_grammar = false,
-			},
-			filetype = "ziggy",
-		}
-
-		parser_config.ziggy_schema = {
-			install_info = {
-				url = "https://github.com/kristoff-it/ziggy",
-				files = { "tree-sitter-ziggy-schema/src/parser.c" },
-				branch = "main",
-				generate_requires_npm = false,
-				requires_generate_from_grammar = false,
-			},
-			filetype = "ziggy-schema",
-		}
-
-		parser_config.supermd = {
-			install_info = {
-				url = "https://github.com/kristoff-it/supermd",
-				includes = { "tree-sitter/supermd/src" },
-				files = {
-					"tree-sitter/supermd/src/parser.c",
-					"tree-sitter/supermd/src/scanner.c"
+			parsers.ziggy = {
+				tier = 2,
+				install_info = {
+					url = "https://github.com/kristoff-it/ziggy",
+					location = "tree-sitter-ziggy",
+					branch = "main",
+					generate = false,
 				},
-				branch = "main",
-				generate_requires_npm = false,
-				requires_generate_from_grammar = false,
-			},
-			filetype = "supermd",
-		}
+				filetype = "ziggy",
+			}
 
-		parser_config.supermd_inline = {
-			install_info = {
-				url = "https://github.com/kristoff-it/supermd",
-				includes = { "tree-sitter/supermd-inline/src" },
-				files = {
-					"tree-sitter/supermd-inline/src/parser.c",
-					"tree-sitter/supermd-inline/src/scanner.c"
+			parsers.ziggy_schema = {
+				tier = 2,
+				install_info = {
+					url = "https://github.com/kristoff-it/ziggy",
+					location = "tree-sitter-ziggy-schema",
+					branch = "main",
+					generate = false,
 				},
-				branch = "main",
-				generate_requires_npm = false,
-				requires_generate_from_grammar = false,
-			},
-			filetype = "supermd_inline",
-		}
+				filetype = "ziggy-schema",
+			}
 
-		parser_config.superhtml = {
-			install_info = {
-				url = "https://github.com/kristoff-it/superhtml",
-				includes = { "tree-sitter-superhtml/src" },
-				files = {
-					"tree-sitter-superhtml/src/parser.c",
-					"tree-sitter-superhtml/src/scanner.c"
+			parsers.supermd = {
+				tier = 2,
+				install_info = {
+					url = "https://github.com/kristoff-it/supermd",
+					location = "tree-sitter/supermd",
+					branch = "main",
+					generate = false,
 				},
-				branch = "main",
-				generate_requires_npm = false,
-				requires_generate_from_grammar = false,
-			},
-			filetype = "superhtml",
-		}
+				filetype = "supermd",
+			}
 
-		-- Then setup treesitter
-		require("nvim-treesitter.configs").setup({
-			ensure_installed = {
-				"lua", "json", "yaml", "zig", "python", "go", "rust",
-				"vimdoc", "markdown", "markdown_inline", "html", "bash", "mermaid",
-				"ziggy", "ziggy_schema", "supermd", "supermd_inline", "superhtml"
-			},
-			auto_install = false,
-			highlight = { enable = true },
-			indent = { enable = true },
+			parsers.supermd_inline = {
+				tier = 2,
+				install_info = {
+					url = "https://github.com/kristoff-it/supermd",
+					location = "tree-sitter/supermd-inline",
+					branch = "main",
+					generate = false,
+				},
+				filetype = "supermd_inline",
+			}
+
+			parsers.superhtml = {
+				tier = 2,
+				install_info = {
+					url = "https://github.com/kristoff-it/superhtml",
+					location = "tree-sitter-superhtml",
+					branch = "main",
+					generate = false,
+				},
+				filetype = "superhtml",
+			}
+
+			-- Filetype != language name mapping (hyphenated ft)
+			if vim.treesitter.language and vim.treesitter.language.register then
+				pcall(vim.treesitter.language.register, "ziggy_schema", "ziggy-schema")
+			end
+		end
+
+		-- Main-branch behavior: TSUpdate rebuilds internal parser tables.
+		-- Re-apply custom parser registrations after updates.
+		vim.api.nvim_create_autocmd("User", {
+			pattern = "TSUpdate",
+			callback = register_zine_parsers,
+		})
+
+		-- Register once for the current session too.
+		register_zine_parsers()
+
+		-- Install parsers if the main branch API is available.
+		-- This is wrapped defensively to handle the transition from master -> main.
+		local ok, ts = pcall(require, "nvim-treesitter")
+		if ok and ts.install then
+			ts.install({
+				-- Core languages
+				"bash",
+				"c",
+				"cpp",
+				"go",
+				"html",
+				"javascript",
+				"json",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"mermaid",
+				"python",
+				"rust",
+				"toml",
+				"tsx",
+				"typescript",
+				"vimdoc",
+				"yaml",
+				"zig",
+
+				-- Zine ecosystem
+				"ziggy",
+				"ziggy_schema",
+				"supermd",
+				"supermd_inline",
+				"superhtml",
+			})
+		end
+
+		-- Highlighting now uses Neovim's built-in treesitter runtime.
+		-- We intentionally DO NOT enable treesitter indentation.
+		local augroup = vim.api.nvim_create_augroup("allison_treesitter_start", { clear = true })
+		vim.api.nvim_create_autocmd("FileType", {
+			group = augroup,
+			callback = function(args)
+				-- Start TS only when a parser exists; ignore errors for unsupported filetypes.
+				pcall(vim.treesitter.start, args.buf)
+			end,
 		})
 	end,
 }
